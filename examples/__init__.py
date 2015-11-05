@@ -1,3 +1,3 @@
-__author__ = "Alessio Rocchi (alessio.rocchi@staff.aruba.it)"
+__version__ = 0.6
 
 
