@@ -11,16 +11,16 @@ python setup.py install
 ```
 
 ##Usage
-In the examples folder you can find some examples about various operations which can be done via API.
+In the examples folder you can find some examples on various operations which can be done via API.
 
-###Login into service
+###Log in to the service
 ```
 from ArubaCloud.PyArubaAPI import CloudInterface
 
 ci = CloudInterface(dc=1)
 ci.login(username="XXX-XXXX", password="XXXXXXXX", load=True)
 ```
-Once you have instantiate CloudInterface object specifing the number of the datacenter(1 to 6), keeping in mind this association:
+Once you have instantiated CloudInterface object by specifiyng the number of the datacenter(1 to 6), keeping in mind this association:
 - 1 -> DC1 -> Italy
 - 2 -> DC2 -> Italy
 - 3 -> DC3 -> Czech Republic
@@ -28,16 +28,16 @@ Once you have instantiate CloudInterface object specifing the number of the data
 - 5 -> DC5 -> Germany
 - 6 -> DC6 -> UK
 
-You can login with your username and password (i.e. AWI-19054), `load` parameter is used to cache all of the data related to the account (within the datacenter) at login fase.
+You can login with your username and password (i.e. AWI-19054), `load` parameter is used to cache all of the data related to the account (within the datacenter) at the login phase.
 
-###Retrieve all templates related to an hypervisor
-You have 4 types of hypervisors to choose, here the lists of them:
+###Retrieve all templates related to a hypervisor
+You have the following 4 types of hypervisors to choose from:
 - 1 -> Microsoft Hyper-V - Cloud Pro
 - 2 -> VMWare - Cloud Pro
 - 3 -> Microsoft Hyper-V Low Cost - Cloud Pro
 - 4 -> VMWare - Cloud Smart
 
-Assuming that we want to list every template that contains Debian in the Description for the hypervisor 4 in Datacenter 2, the code is the following:
+Assuming that we want to list every template that contains Debian in the Description for hypervisor 4 in Datacenter 2, the code will be the following:
 ```
 from ArubaCloud.PyArubaAPI import CloudInterface
 
@@ -50,19 +50,19 @@ pprint(ci.find_template(name='Debian', hv=4))
 ```
 
 ### Create a new VM
-In order to create a VM you have to instantiate the specific object exposed from ArubaCloud.objects package:
+In order to create a VM you have to instantiate the specific object exposed by the ArubaCloud.objects package:
 - ProVmCreator
 - SmartVmCreator
 
-About Pro VMs, you can choose an high number of customizations, such as, cpu number, ram quantity, number and size of virtual disks, public IPs, private IPs and so on.
+About Pro VMs, you can choose from a large number of customizations, such as, number of cpu, ram quantity, number and size of virtual disks, public IPs, private IPs and so on.
 
-Smart Servers are not customizable (this reflect the behaviour of the service itself), but you can choose 4 different size:
+Smart Servers are not customizable (this reflects the behaviour of the service itself), but you can choose 4 different sizes:
 - Small
 - Medium
 - Large
 - Extra Large
 
-#### Example to create a Pro VM
+#### Example of how to create a Pro VM
 ```
 from ArubaCloud.PyArubaAPI import CloudInterface
 from ArubaCloud.objects import ProVmCreator
@@ -83,7 +83,7 @@ c.add_virtual_disk(40)
 print(c.commit(url=ci.wcf_baseurl, debug=True))
 ```
 
-#### Example to create a Smart VM
+#### Example of how to create a Smart VM
 ```
 from ArubaCloud.PyArubaAPI import CloudInterface
 from ArubaCloud.objects import SmartVmCreator
