@@ -102,7 +102,7 @@ class Pro(VM):
             'ServerId': self.sid,
             'Disk': {
                 'CustomVirtualDiskPath': None,
-                'Size': None,
+                'Size': 0,
                 'VirtualDiskType': virtual_disk_id,
                 'VirtualDiskUpdateType': virtual_disk_operation.delete
             }
