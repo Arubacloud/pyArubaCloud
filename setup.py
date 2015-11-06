@@ -1,13 +1,13 @@
-from setuptools import setup
+from distutils.core import setup
 
 setup(
     name='pyArubaCloud',
     version='0.6',
-    packages=['examples', 'ArubaCloud', 'ArubaCloud.base', 'ArubaCloud.tools', 'ArubaCloud.helper',
-              'ArubaCloud.objects', 'ArubaCloud.objects.VmTypes'],
-    url='http://www.github.com/ArubaCloud/pyArubaCloud',
-    license='GPL',
+    packages=['ArubaCloud', 'ArubaCloud.base', 'ArubaCloud.helper', 'ArubaCloud.objects',
+              'ArubaCloud.objects.VmTypes', 'ArubaCloud.PyArubaAPI'],
+    url='https://github.com/ArubaCloud/pyArubaCloud/',
+    license='Apache',
     author='Alessio Rocchi',
-    author_email='alessio.rocchi@staff.aruba.it',
-    description='Python Library to interact with Aruba Cloud IaaS', requires=['requests']
+    author_email='labs@arubacloud.com',
+    description='Python Interface for Aruba Cloud IaaS'
 )

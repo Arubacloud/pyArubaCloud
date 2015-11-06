@@ -1,6 +1,3 @@
-__author__ = 'alessio.rocchi'
-
-
 class Template(object):
     descr = None
     template_id = ''
