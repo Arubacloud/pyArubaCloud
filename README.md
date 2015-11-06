@@ -97,4 +97,8 @@ c.set_type(size='small')
 print(c.commit(url=ci.wcf_baseurl, debug=True))
 ```
 
-For more examples, check [this link](https://github.com/Arubacloud/pyArubaCloud/tree/master/examples)
+More examples can be found in the [examples folder](https://github.com/Arubacloud/pyArubaCloud/tree/master/examples), following the complete list:
+- [Delete a VM](https://github.com/Arubacloud/pyArubaCloud/blob/master/examples/delete_vm.py)
+- [Edit Pro VM Hardware](https://github.com/Arubacloud/pyArubaCloud/blob/master/examples/edit_vm_hardware.py)
+- [Manage VLAN (add, attach, deattach, remove)](https://github.com/Arubacloud/pyArubaCloud/blob/master/examples/manage_vswitch.py)
+- [Reinitialize Smart VM](https://github.com/Arubacloud/pyArubaCloud/blob/master/examples/reinitialize.py)
