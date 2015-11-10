@@ -14,7 +14,7 @@ python setup.py install
 In the examples folder you can find some examples on various operations which can be done via API.
 
 ###Log in to the service
-```
+``` python
 from ArubaCloud.PyArubaAPI import CloudInterface
 
 ci = CloudInterface(dc=1)
@@ -38,7 +38,7 @@ You have the following 4 types of hypervisors to choose from:
 - 4 -> VMWare - Cloud Smart
 
 Assuming that we want to list every template that contains Debian in the Description for hypervisor 4 in Datacenter 2, the code will be the following:
-```
+``` python
 from ArubaCloud.PyArubaAPI import CloudInterface
 
 ci = CloudInterface(dc=1)
@@ -63,7 +63,7 @@ Smart Servers are not customizable (this reflects the behaviour of the service i
 - Extra Large
 
 #### Example of how to create a Pro VM
-```
+``` python
 from ArubaCloud.PyArubaAPI import CloudInterface
 from ArubaCloud.objects import ProVmCreator
 
@@ -84,7 +84,7 @@ print(c.commit(url=ci.wcf_baseurl, debug=True))
 ```
 
 #### Example of how to create a Smart VM
-```
+``` python
 from ArubaCloud.PyArubaAPI import CloudInterface
 from ArubaCloud.objects import SmartVmCreator
 
