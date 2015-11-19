@@ -15,7 +15,7 @@ if __name__ == '__main__':
     i = CloudInterface(dc='2')
     i.login(username=p.username, password=p.password, load=True)
 
-    vm = i.find_vm(pattern=p.vm_name)[0]
+    vm = i.get_vm(pattern=p.vm_name)[0]
     # vm.poweroff()
 
     # Set the amount of CPU cores
