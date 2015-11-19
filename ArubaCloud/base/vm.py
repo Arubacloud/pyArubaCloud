@@ -12,10 +12,10 @@ class VMList(list):
         @return (list): the subset containing the serach result.
         """
         if name.__class__ is 'base.Server.Pro' or name.__class__ is 'base.Server.Smart':
-            print('DEBUG: matched VM object %s' % name.__class__)
+            # print('DEBUG: matched VM object %s' % name.__class__)
             pattern = name.vm_name
         else:
-            print('DEBUG: matched Str Object %s' % name.__class__)
+            # print('DEBUG: matched Str Object %s' % name.__class__)
             pattern = name
         # 14/06/2013: since this method is called within a thread and I wont to pass the return objects with queue or
         # call back, I will allocate a list inside the Interface class object itself, which contain all of the vm found
