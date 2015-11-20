@@ -75,8 +75,8 @@ class VM(object):
         data = dict(
             ServerId=self.sid
         )
-        json_scheme = self.interface.gen_def_json_scheme('SetEnqueueServerPowerOn', data)
-        json_obj = self.interface.call_method_post('SetEnqueueServerPowerOn', json_scheme=json_scheme, debug=debug)
+        json_scheme = self.interface.gen_def_json_scheme('SetEnqueueServerStart', data)
+        json_obj = self.interface.call_method_post('SetEnqueueServerStart', json_scheme=json_scheme, debug=debug)
         return True if json_obj['Success'] is 'True' else False
 
     def reinitialize(self, admin_password=None, debug=False):
