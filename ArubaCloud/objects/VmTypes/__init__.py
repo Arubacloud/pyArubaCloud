@@ -5,14 +5,12 @@ from ArubaCloud.objects import VirtualDiskOperation
 
 
 class Smart(VM):
-    package = None
-    ip_addr = None
-
     def __init__(self, interface, sid):
         super(Smart, self).__init__(interface)
         self.cltype = 'smart'
         self.sid = sid
         self.ip_addr = Ip()
+        self.package = None
 
     def __str__(self):
         msg = super(Smart, self).__str__()
@@ -21,16 +19,14 @@ class Smart(VM):
 
 
 class Pro(VM):
-    ip_addr = Ip()
-    hds = []
-
     def __init__(self, interface, sid):
         super(Pro, self).__init__(interface)
         self.cltype = 'pro'
         self.sid = sid
+        self.ip_addr = Ip()
         # Load HD information
-        hds = self.interface.get_server_detail(self.sid)['VirtualDisks']
-        for hd in hds:
+        self.hds = self.interface.get_server_detail(self.sid)['VirtualDisks']
+        for hd in self.hds:
             self.hds.append(hd)
 
     """
