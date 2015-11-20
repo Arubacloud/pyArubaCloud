@@ -8,8 +8,9 @@ class Smart(VM):
     package = None
     ip_addr = None
 
-    def __init__(self, interface):
+    def __init__(self, interface, sid):
         super(Smart, self).__init__(interface)
+        self.sid = sid
         self.cltype = 'smart'
         self.ip_addr = Ip()
 

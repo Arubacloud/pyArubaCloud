@@ -162,7 +162,7 @@ class CloudInterface(JsonInterface):
             self.get_ip()
         for elem in dict(json_obj)["Value"]:
             if elem['HypervisorType'] is 4:
-                s = Smart(interface=self)
+                s = Smart(interface=self, sid=elem['ServerId'])
             else:
                 s = Pro(interface=self, sid=elem['ServerId'])
             s.vm_name = elem['Name']
