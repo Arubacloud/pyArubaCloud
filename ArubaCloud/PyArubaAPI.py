@@ -149,10 +149,7 @@ class CloudInterface(JsonInterface):
         """
         Create the list of Server object inside the Datacenter objects.
         Build an internal list of VM Objects (pro or smart) as iterator.
-        Args:
-            None
-        Returns:
-            True if json query has success. False if not.
+        :return: bool
         """
         json_scheme = self.gen_def_json_scheme('GetServers')
         json_obj = self.call_method_post(method='GetServers', json_scheme=json_scheme)
@@ -165,7 +162,7 @@ class CloudInterface(JsonInterface):
             self.get_ip()
         for elem in dict(json_obj)["Value"]:
             if elem['HypervisorType'] is 4:
-                s = Smart(interface=self)
+                s = Smart(interface=self, sid=elem['ServerId'])
             else:
                 s = Pro(interface=self, sid=elem['ServerId'])
             s.vm_name = elem['Name']
@@ -222,17 +219,17 @@ class CloudInterface(JsonInterface):
             raise Exception('Error, no pattern defined')
         return template_list
 
-    def find_vm(self, pattern=None):
+    def get_vm(self, pattern=None):
         if len(self.vmlist) <= 0:
             self.get_servers()
         if pattern is None:
-            print('No filter defined. Use self.servers')
+            return self.vmlist
         else:
             return self.vmlist.find(pattern)
 
     def get_ip_by_vm(self, vm):
         self.get_ip()  # call get ip list to create the internal list of IPs.
-        vm_id = self.find_vm(vm)[0].sid
+        vm_id = self.get_vm(vm)[0].sid
         for ip in self.iplist:
             if ip.serverid == vm_id:
                 return ip

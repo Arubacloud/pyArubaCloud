@@ -14,7 +14,7 @@ if __name__ == '__main__':
 
     o = CloudInterface(p.dc)
     o.login(p.username, p.password, False)
-    for vm in o.find_vm(pattern=p.pattern):
+    for vm in o.get_vm(pattern=p.pattern):
         print('Reinitialize: %s' % vm.vm_name)
         vm.poweroff()
         while len(o.get_jobs()['Value']) > 0:
