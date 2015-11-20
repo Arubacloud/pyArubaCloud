@@ -25,8 +25,9 @@ class Pro(VM):
         self.sid = sid
         self.ip_addr = Ip()
         # Load HD information
-        self.hds = self.interface.get_server_detail(self.sid)['VirtualDisks']
-        for hd in self.hds:
+        self.hds = []
+        _hds = self.interface.get_server_detail(self.sid)['VirtualDisks']
+        for hd in _hds:
             self.hds.append(hd)
 
     """
