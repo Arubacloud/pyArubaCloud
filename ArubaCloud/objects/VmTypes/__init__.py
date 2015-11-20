@@ -10,8 +10,8 @@ class Smart(VM):
 
     def __init__(self, interface, sid):
         super(Smart, self).__init__(interface)
-        self.sid = sid
         self.cltype = 'smart'
+        self.sid = sid
         self.ip_addr = Ip()
 
     def __str__(self):
