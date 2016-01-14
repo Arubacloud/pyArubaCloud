@@ -1,4 +1,5 @@
 import argparse
+import logging
 from pprint import pprint
 
 from ArubaCloud.PyArubaAPI import CloudInterface
@@ -14,10 +15,10 @@ if __name__ == '__main__':
                         default='ArubaCloud2015')
     p = parser.parse_args()
 
-    i = CloudInterface(dc=p.dc)
+    i = CloudInterface(dc=p.dc, debug_level=logging.DEBUG)
     i.login(username=p.username, password=p.password, load=False)
 
-    ip = i.purchase_ip()
+    ip = i.purchase_ip(debug=True)
     from ArubaCloud.objects import ProVmCreator
 
     c = ProVmCreator(name=p.vmname, admin_password=p.vmpassword, template_id=p.template, auth_obj=i.auth)
