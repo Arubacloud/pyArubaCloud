@@ -4,6 +4,7 @@ class Template(object):
     id_code = None
     hypervisor = None
     name = None
+    enabled = None
 
     class ResourceBounds(object):
         def __init__(self):
@@ -23,7 +24,10 @@ class Template(object):
         msg += ' -> Hypervisor: %s\n' % self.hypervisor
         msg += ' -> IdCode: %s\n' % self.id_code
         msg += ' -> Id: %s\n' % self.template_id
+        msg += ' -> Enabled: %s\n'.self.enabled
         return msg
 
     def __repr__(self):
-        return 'Template Name: %s, Hypervisor: %s, Id: %s' % (self.descr, self.hypervisor, self.template_id)
+        return 'Template Name: %s, Hypervisor: %s, Id: %s, Enabled: %s' % (
+            self.descr, self.hypervisor, self.template_id, self.enabled
+        )

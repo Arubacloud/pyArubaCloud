@@ -127,6 +127,7 @@ class CloudInterface(JsonInterface):
                 o.descr = inner_elem['Description']
                 o.id_code = inner_elem['IdentificationCode']
                 o.name = inner_elem['Name']
+                o.enabled = inner_elem['Enabled']
                 if hv != 'SMART':
                     for rb in inner_elem['ResourceBounds']:
                         resource_type = rb['ResourceType']
