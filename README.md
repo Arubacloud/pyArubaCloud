@@ -1,4 +1,4 @@
-[![Code Climate](https://codeclimate.com/repos/567935fa2af2344f10000a6e/badges/9696d499f1ac087290f9/gpa.svg)](https://codeclimate.com/repos/567935fa2af2344f10000a6e/feed)
+[![Code Climate](https://codeclimate.com/github/blackms/pyArubaCloud/badges/gpa.svg)](https://codeclimate.com/github/blackms/pyArubaCloud)
 
 Python Interface for ArubaCloud IaaS Service. This is an early-stage release, not every features has been covered.
 
