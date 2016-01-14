@@ -24,7 +24,7 @@ class Template(object):
         msg += ' -> Hypervisor: %s\n' % self.hypervisor
         msg += ' -> IdCode: %s\n' % self.id_code
         msg += ' -> Id: %s\n' % self.template_id
-        msg += ' -> Enabled: %s\n'.self.enabled
+        msg += ' -> Enabled: %s\n' % self.enabled
         return msg
 
     def __repr__(self):
