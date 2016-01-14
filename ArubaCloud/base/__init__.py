@@ -35,11 +35,12 @@ class JsonInterfaceBase(object):
         response = Http.post(url=url, data=json_scheme, headers=headers)
         if response.status_code != 200:
             from ArubaCloud.base.Errors import MalformedJsonRequest
-            raise MalformedJsonRequest("Request: {}".format(json_scheme))
+            raise MalformedJsonRequest("Request: {}, Status Code: {}".format(json_scheme, response.status_code))
         parsed_response = json.loads(response.content)
         if debug is True:
-            self.logger.debug(parsed_response)
-            print(parsed_response)
+            msg = "Response Message: {}\nHTTP Status Code: {}".format(parsed_response, response.status_code)
+            self.logger.debug(msg)
+            print(msg)
         return parsed_response
 
 
