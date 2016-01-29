@@ -33,10 +33,13 @@ class JsonInterfaceBase(object):
         url = '{}/{}'.format(self.wcf_baseurl, method)
         headers = {'Content-Type': 'application/json', 'Content-Length': len(json_scheme)}
         response = Http.post(url=url, data=json_scheme, headers=headers)
+        parsed_response = json.loads(response.content)
         if response.status_code != 200:
             from ArubaCloud.base.Errors import MalformedJsonRequest
             raise MalformedJsonRequest("Request: {}, Status Code: {}".format(json_scheme, response.status_code))
-        parsed_response = json.loads(response.content)
+        if parsed_response['Success'] is False:
+            from ArubaCloud.base.Errors import RequestFailed
+            raise RequestFailed("Request: {}, Response: {}".format(json_scheme, parsed_response))
         if debug is True:
             msg = "Response Message: {}\nHTTP Status Code: {}".format(parsed_response, response.status_code)
             self.logger.debug(msg)

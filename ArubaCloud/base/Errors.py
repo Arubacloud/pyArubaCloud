@@ -11,3 +11,8 @@ class OperationNotPermitted(Exception):
 class MalformedJsonRequest(Exception):
     def __init__(self, message):
         super(MalformedJsonRequest, self).__init__(message)
+
+
+class RequestFailed(Exception):
+    def __init__(self, message):
+        super(RequestFailed, self).__init__(message)
