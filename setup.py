@@ -15,7 +15,7 @@ setup(
     keywords="arubacloud",
     url="https://github.com/Arubacloud/pyArubaCloud",
     packages=['ArubaCloud', 'ArubaCloud.base', 'ArubaCloud.helper', 'ArubaCloud.objects.VmTypes', 'ArubaCloud.objects'],
-    long_description=read('README'),
+    long_description="Python Interface to interact with ArubaCLoud IaaS Service.",
     classifiers=[
         "Development Status :: 4 - Beta",
         "Topic :: Utilities",
