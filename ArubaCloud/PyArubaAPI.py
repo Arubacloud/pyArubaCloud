@@ -1,6 +1,4 @@
 import logging
-import os
-import sys
 from pprint import pprint
 
 from ArubaCloud.base import Auth, JsonInterfaceBase
@@ -62,16 +60,9 @@ class CloudInterface(JsonInterface):
         @return: None
         """
         self.auth = Auth(username, password)
-        try:
-            if load is True:
-                self.get_ip()
-                self.get_servers()
-        except Exception as e:
-            exc_type, exc_obj, exc_tb = sys.exc_info()
-            fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
-            self.logger.error('%s: Caught Exception: %s in: %s at line: %s\nMsg: %s' % (
-                self.__class__.__name__, exc_type, fname, exc_tb.tb_lineno, e.message))
-            raise Exception(e)
+        if load is True:
+            self.get_ip()
+            self.get_servers()
 
     def poweroff_server(self, server=None, server_id=None):
         """
