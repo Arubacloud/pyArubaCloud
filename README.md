@@ -5,7 +5,13 @@ Python Interface for ArubaCloud IaaS Service. This is an early-stage release, no
 This project is under development, the classes, methods and parameters might change over time. This README usually reflects the syntax of the latest version.
 
 #Getting Started
-##Installation
+## Installation
+Python Package:
+```
+pip install pyarubacloud
+```
+
+Git Version:
 ```
 git clone https://github.com/Arubacloud/pyArubaCloud.git pyArubaCloud
 cd pyArubaCloud
