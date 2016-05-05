@@ -1,4 +1,4 @@
-from ArubaCloud.base.Errors import OperationNotPermitted
+from ArubaCloud.base.Errors import OperationNotPermitted, MalformedJsonRequest
 from ArubaCloud.base.vm import VM
 from ArubaCloud.objects import Ip
 from ArubaCloud.objects import VirtualDiskOperation
@@ -16,6 +16,26 @@ class Smart(VM):
         msg = super(Smart, self).__str__()
         msg += ' -> IPAddr: %s\n' % self.ip_addr
         return msg
+
+    def upgrade_vm(self, package_id, debug=False):
+        if not self.status == 2:
+            raise OperationNotPermitted("Cannot edit resources in the current state of the VM. Turn off the VM first.")
+        if package_id > 4 or package_id <= 0:
+            return MalformedJsonRequest("Packages available are: 1, 2, 3, 4.")
+        method_json = {
+            "Server": {
+                "ServerId": self.sid,
+                "SmartVMWarePackageID": package_id
+            }
+        }
+        json_obj = self.interface.call_method_post(method='SetEnqueueServerUpdate',
+                                                   json_scheme=self.interface.gen_def_json_scheme(
+                                                       req='SetEnqueueServerUpdate',
+                                                       method_fields=method_json
+                                                   ))
+        if debug is True:
+            print(json_obj)
+        return True if json_obj['Success'] is True else False
 
 
 class Pro(VM):
