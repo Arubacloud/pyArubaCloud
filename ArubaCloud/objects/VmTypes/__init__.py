@@ -32,7 +32,8 @@ class Smart(VM):
                                                    json_scheme=self.interface.gen_def_json_scheme(
                                                        req='SetEnqueueServerUpdate',
                                                        method_fields=method_json
-                                                   ))
+                                                   ),
+                                                   debug=debug)
         if debug is True:
             print(json_obj)
         return True if json_obj['Success'] is True else False
