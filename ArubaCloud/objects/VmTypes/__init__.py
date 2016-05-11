@@ -112,6 +112,31 @@ class Pro(VM):
             print(json_obj)
         return True if json_obj['Success'] is True else False
 
+    def resize_virtual_disk(self, size, debug=False):
+            if not self.status == 2:
+                raise OperationNotPermitted("Cannot edit resources in the current state of the VM.")
+            if self.hd_total_size > size:
+                raise OperationNotPermitted("Cannot decrease size of the disk")
+            virtual_disk_operation = VirtualDiskOperation
+
+            method_json = {
+                'ServerId': self.sid,
+                'Disk': {
+                    'CustomVirtualDiskPath': None,
+                    'Size': size,
+                    'VirtualDiskType': self.hds,
+                    'VirtualDiskUpdateType': virtual_disk_operation.resize
+                }
+            }
+            json_obj = self.interface.call_method_post(method='SetEnqueueVirtualDiskManage',
+                                                       json_scheme=self.interface.gen_def_json_scheme(
+                                                           req='SetEnqueueVirtualDiskManage',
+                                                           method_fields=method_json)
+                                                       )
+            if debug is True:
+                print(json_obj)
+            return True if json_obj['Success'] is True else False
+
     def remove_virtual_disk(self, virtual_disk_id, debug=False):
         if not self.status == 2:
             raise OperationNotPermitted("Cannot edit resources in the current state of the VM.")
