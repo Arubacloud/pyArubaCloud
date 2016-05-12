@@ -404,3 +404,61 @@ class CloudInterface(JsonInterface):
         json_obj = self.call_method_post(method='SetEnqueueDeassociateVLan', json_scheme=json_scheme)
         return True if json_obj['Success'] is True else False
 
+    def create_snapshot(self, dc, server_id=None):
+        sid = CloudInterface(dc).get_server_detail(server_id)
+        if sid['HypervisorType'] is not 4:
+            snapshot_request = {
+                "Snapshot": {
+                    "ServerId": server_id,
+                    "SnapshotOperationTypes": "Create"
+                }
+            }
+            json_scheme = self.gen_def_json_scheme('SetEnqueueServerSnapshot', method_fields=snapshot_request)
+            json_obj = self.call_method_post(method='SetEnqueueServerSnapshot', json_scheme=json_scheme)
+            return True if json_obj['Success'] is True else False
+
+    def restore_snapshot(self, server_id=None):
+        snapshot_request = {
+            "Snapshot": {
+                "ServerId": server_id,
+                "SnapshotOperationTypes": "Restore"
+            }
+        }
+        json_scheme = self.gen_def_json_scheme('SetEnqueueServerSnapshot', method_fields=snapshot_request)
+        json_obj = self.call_method_post(method='SetEnqueueServerSnapshot', json_scheme=json_scheme)
+        return True if json_obj['Success'] is True else False
+
+    def delete_snapshot(self, server_id=None):
+        snapshot_request = {
+            "Snapshot": {
+                "ServerId": server_id,
+                "SnapshotOperationTypes": "Delete"
+            }
+        }
+        json_scheme = self.gen_def_json_scheme('SetEnqueueServerSnapshot', method_fields=snapshot_request)
+        json_obj = self.call_method_post(method='SetEnqueueServerSnapshot', json_scheme=json_scheme)
+        return True if json_obj['Success'] is True else False
+
+    def archive_vm(self, dc, server_id=None):
+        sid = CloudInterface(dc).get_server_detail(server_id)
+        if sid['HypervisorType'] is not 4:
+            archive_request = {
+                "ArchiveVirtualServer": {
+                    "ServerId": server_id
+                }
+            }
+            json_scheme = self.gen_def_json_scheme('ArchiveVirtualServer', method_fields=archive_request)
+            json_obj = self.call_method_post(method='ArchiveVirtualServer', json_scheme=json_scheme)
+            return True if json_obj['Success'] is True else False
+
+    def restore_vm(self, server_id=None, cpu_qty=None, ram_qty=None):
+        restore_request = {
+            "SetEnqueueServerRestore": {
+                "ServerId": server_id,
+                "CPUQuantity ": cpu_qty,
+                "RAMQuantity ": ram_qty
+            }
+        }
+        json_scheme = self.gen_def_json_scheme('SetEnqueueServerRestore', method_fields=restore_request)
+        json_obj = self.call_method_post(method='SetEnqueueServerRestore', json_scheme=json_scheme)
+        return True if json_obj['Success'] is True else False
