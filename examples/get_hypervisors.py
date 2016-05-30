@@ -15,4 +15,4 @@ if __name__ == '__main__':
     i.get_hypervisors()
 
     from pprint import pprint
-    pprint(i.find_template(name='Windows', hv=2))
+    pprint(i.find_template(name='Ubuntu', hv=4))
