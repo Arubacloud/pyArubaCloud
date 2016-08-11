@@ -20,6 +20,9 @@ class Creator(object):
         url = '{}/{}'.format(url, 'SetEnqueueServerCreation')
         headers = {'Content-Type': 'application/json', 'Content-Length': str(len(self.get_json()))}
         response = Http.post(url=url, data=self.get_json(), headers=headers)
+        if response.status_code != 200:
+            print(response.content)
+            return False
         parsed_response = json.loads(response.content)
         if debug is True:
             print(parsed_response)
