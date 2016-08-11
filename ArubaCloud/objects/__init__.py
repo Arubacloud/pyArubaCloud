@@ -18,7 +18,7 @@ class Creator(object):
     def commit(self, url, debug=False):
         from ArubaCloud.helper import Http
         url = '{}/{}'.format(url, 'SetEnqueueServerCreation')
-        headers = {'Content-Type': 'application/json', 'Content-Length': len(self.get_json())}
+        headers = {'Content-Type': 'application/json', 'Content-Length': str(len(self.get_json()))}
         response = Http.post(url=url, data=self.get_json(), headers=headers)
         parsed_response = json.loads(response.content)
         if debug is True:
