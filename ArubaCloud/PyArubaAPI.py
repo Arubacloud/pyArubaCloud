@@ -44,6 +44,7 @@ class CloudInterface(JsonInterface):
 
     def __init__(self, dc, debug_level=logging.INFO):
         super(CloudInterface, self).__init__()
+        assert isinstance(dc, int), Exception('dc must be an integer and must be not null.')
         self.wcf_baseurl = 'https://api.dc%s.computing.cloud.it/WsEndUser/v2.9/WsEndUser.svc/json' % (str(dc))
         self.logger = ArubaLog(level=debug_level, log_to_file=False)
         self.logger.name = self.__class__
