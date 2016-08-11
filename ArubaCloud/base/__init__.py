@@ -31,7 +31,7 @@ class JsonInterfaceBase(object):
 
     def call_method_post(self, method, json_scheme, debug=False):
         url = '{}/{}'.format(self.wcf_baseurl, method)
-        headers = {'Content-Type': 'application/json', 'Content-Length': len(json_scheme)}
+        headers = {'Content-Type': 'application/json', 'Content-Length': str(len(json_scheme))}
         response = Http.post(url=url, data=json_scheme, headers=headers)
         parsed_response = json.loads(response.content)
         if response.status_code != 200:
