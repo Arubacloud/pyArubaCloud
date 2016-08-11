@@ -1,0 +1,6 @@
+
+.gitignore
+.idea/
+.vagrant/
+*.pyc
+Vagrantfile
