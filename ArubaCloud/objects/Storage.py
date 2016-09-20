@@ -34,7 +34,7 @@ class StorageCreator(Creator):
         self.space = space
         self.iqn = iqn
         self.auth = auth_obj
-        self.wcf_baseurl = 'https://api.dc%s.computing.cloud.it/WsEndUser/v2.6/WsEndUser.svc/json' % (str(DC))
+        self.wcf_baseurl = 'https://api.dc%s.computing.cloud.it/WsEndUser/v2.9/WsEndUser.svc/json' % (str(DC))
         if 'ISCSI' in self.protocol:
             self.json_msg = {
                 'ApplicationId': 'SetEnqueuePurchaseSharedStorage',
@@ -68,7 +68,7 @@ class Storage_Actions(JsonInterfaceBase):
 
     def __init__(self, DC):
         super(Storage_Actions, self).__init__()
-        self.wcf_baseurl = 'https://api.dc%s.computing.cloud.it/WsEndUser/v2.6/WsEndUser.svc/json' % (str(DC))
+        self.wcf_baseurl = 'https://api.dc%s.computing.cloud.it/WsEndUser/v2.9/WsEndUser.svc/json' % (str(DC))
 
     @property
     def name(self):

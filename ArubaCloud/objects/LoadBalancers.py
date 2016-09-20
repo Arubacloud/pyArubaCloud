@@ -47,7 +47,7 @@ class LoadBalancer(JsonInterfaceBase):
 
     def __init__(self, DC):
         super(LoadBalancer, self).__init__()
-        self.wcf_baseurl = 'https://api.dc%s.computing.cloud.it/WsEndUser/v2.6/WsEndUser.svc/json' % (str(DC))
+        self.wcf_baseurl = 'https://api.dc%s.computing.cloud.it/WsEndUser/v2.9/WsEndUser.svc/json' % (str(DC))
 
     @property
     def name(self):
@@ -179,7 +179,7 @@ class LoadBalancerCreator(Creator):
         self.serverport = serverport
         self.contact = contact
         self.auth = auth_obj
-        self.wcf_baseurl = 'https://api.dc%s.computing.cloud.it/WsEndUser/v2.6/WsEndUser.svc/json' % (str(DC))
+        self.wcf_baseurl = 'https://api.dc%s.computing.cloud.it/WsEndUser/v2.9/WsEndUser.svc/json' % (str(DC))
         self.json_msg = {
             'ApplicationId': 'SetEnqueueLoadBalancerCreation',
             'RequestId': 'SetEnqueueLoadBalancerCreation',
