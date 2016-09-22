@@ -16,3 +16,8 @@ class MalformedJsonRequest(Exception):
 class RequestFailed(Exception):
     def __init__(self, message):
         super(RequestFailed, self).__init__(message)
+
+
+class OperationAlreadyEnqueued(Exception):
+    def __init__(self, message):
+        super(OperationAlreadyEnqueued, self).__init__(message)

@@ -13,12 +13,12 @@ class ReverseDnsTest(unittest.TestCase):
         self.assertIsInstance(response, list)
 
     def test_set_enqueue_set_reverse_dns(self):
-        response = self.reverseDns.set(address=['95.110.165.246'], host_name=['myTestUnit.py'])
+        response = self.reverseDns.set(address='95.110.165.246', host_name=['myTestUnit.py'])
         self.assertIs(response, True)
 
-    # def test_set_enqueue_reset_reverse_dns(self):
-    #     response = self.reverseDns.reset(address=['95.110.165.246'])
-    #     self.assertIs(response, True)
+    def test_set_enqueue_reset_reverse_dns(self):
+        response = self.reverseDns.reset(address=['95.110.165.246'])
+        self.assertIs(response, True)
 
 if __name__ == '__main__':
     unittest.main()

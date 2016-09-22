@@ -43,13 +43,14 @@ class ReverseDns(ArubaCloudService):
 
     def set(self, address, host_name):
         """
-        :type address:  list[str]
+        Assign one or more PTR record to a single IP Address
+        :type address: str
         :type host_name: list[str]
-        :param address: (list[str]) String representing the IP address to set
-        :param host_name: (list[str]) Hostname to be assigned to reverse DNS
+        :param address: (str) The IP address to configure
+        :param host_name: (list[str]) The list of strings representing PTR records
         :return: (bool) True in case of success, False in case of failure
         """
-        request = self._call(SetEnqueueSetReverseDns, IPs=address, Hosts=host_name)
+        request = self._call(SetEnqueueSetReverseDns, IP=address, Hosts=host_name)
         response = request.commit()
         return response['Success']
 

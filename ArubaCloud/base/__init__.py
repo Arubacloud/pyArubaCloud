@@ -99,13 +99,16 @@ class Request(IRequest):
         """
         assert self.uri is not None, Exception("BadArgument: uri property cannot be None")
         url = '{}/{}'.format(self.uri, self.__class__.__name__)
-        serialized_json = jsonpickle.encode(self, unpicklable=False)
+        serialized_json = jsonpickle.encode(self, unpicklable=False, )
         headers = {'Content-Type': 'application/json', 'Content-Length': str(len(serialized_json))}
         response = Http.post(url=url, data=serialized_json, headers=headers)
         content = jsonpickle.decode(response.content.decode("utf-8"))
         if response.status_code != 200:
             from ArubaCloud.base.Errors import MalformedJsonRequest
             raise MalformedJsonRequest("Request: {}, Status Code: {}".format(serialized_json, response.status_code))
+        if content['ResultCode'] == 17:
+            from ArubaCloud.base.Errors import OperationAlreadyEnqueued
+            raise OperationAlreadyEnqueued("{} already enqueued".format(self.__class__.__name__))
         if content['Success'] is False:
             from ArubaCloud.base.Errors import RequestFailed
             raise RequestFailed("Request: {}, Response: {}".format(serialized_json, response.content))
@@ -114,6 +117,19 @@ class Request(IRequest):
     @abstractmethod
     def commit(self):
         raise NotImplementedError("commit method must be implemented in the real request implementation class")
+
+    def __getstate__(self):
+        """
+        Internal method to remove non serializable object before the object serialization
+        :return: (Request) A copy of the state of the object after removing unwanted fields
+        """
+        state = self.__dict__.copy()
+        del state['logger']
+        del state['uri']
+        return state
+
+    def __setstate__(self, state):
+        self.__dict__.update(state)
 
 
 class Auth(object):
