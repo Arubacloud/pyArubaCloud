@@ -1,4 +1,4 @@
-from .BaseReverseDns import BaseReverseDns
+from ._BaseReverseDns import BaseReverseDns
 
 
 # noinspection PyPep8Naming

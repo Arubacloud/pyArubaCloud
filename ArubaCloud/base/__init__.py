@@ -108,7 +108,7 @@ class Request(IRequest):
             raise MalformedJsonRequest("Request: {}, Status Code: {}".format(serialized_json, response.status_code))
         if content['Success'] is False:
             from ArubaCloud.base.Errors import RequestFailed
-            raise RequestFailed("Request: {}, Response: {}".format(serialized_json, response))
+            raise RequestFailed("Request: {}, Response: {}".format(serialized_json, response.content))
         return content
 
     @abstractmethod
