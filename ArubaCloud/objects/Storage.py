@@ -62,39 +62,3 @@ class StorageCreator(Creator):
                     'SharedStorageProtocolType': self.protocol
                 }
             }
-
-
-class Storage_Actions(JsonInterfaceBase):
-
-    def __init__(self, DC):
-        super(Storage_Actions, self).__init__()
-        self.wcf_baseurl = 'https://api.dc%s.computing.cloud.it/WsEndUser/v2.9/WsEndUser.svc/json' % (str(DC))
-
-    @property
-    def name(self):
-        return self.name
-
-    def get_shared_storage(self):
-        scheme = self.gen_def_json_scheme('GetSharedStorages')
-        json_obj = self.call_method_post('GetSharedStorages', json_scheme=scheme)
-        return json_obj
-
-    def remove_shared_storage(self, storageid):
-        rm_storage_request = {
-            "SetEnqueueRemoveSharedStorage": {
-                "SharedStorageID": storageid
-            }
-        }
-        scheme = self.gen_def_json_scheme('SetEnqueueRemoveSharedStorage', method_fields=rm_storage_request)
-        json_obj = self.call_method_post('SetEnqueueRemoveSharedStorage', json_scheme=scheme)
-        return json_obj
-
-    def remove_iqn_storage(self, storageid):
-        rm_storage_request = {
-            "SetEnqueueRemoveIQNSharedStorage": {
-                "SharedStorageID": storageid
-            }
-        }
-        scheme = self.gen_def_json_scheme('SetEnqueueRemoveIQNSharedStorage', method_fields=rm_storage_request)
-        json_obj = self.call_method_post('SetEnqueueRemoveIQNSharedStorage', json_scheme=scheme)
-        return json_obj
