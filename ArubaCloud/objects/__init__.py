@@ -183,7 +183,7 @@ class IpList(list):
 
     def show(self):
         for elem in self:
-            print elem
+            print(elem)
 
     def find(self, vm_name=None, ip_addr=None, resid=None):
         # more defensive checks, just to have fun...

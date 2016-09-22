@@ -26,7 +26,7 @@ class LoadBalancer(JsonInterfaceBase):
     def get(self):
         scheme = self.gen_def_json_scheme('GetLoadBalancers')
         json_obj = self.call_method_post('GetLoadbalancers', json_scheme=scheme)
-        print json_obj
+        print(json_obj)
 
     def login(self, username, password):
         self.auth.username = username
@@ -101,11 +101,10 @@ class CloudInterface(JsonInterface):
 
     def get_hypervisors(self):
         """
-        Create the list of every template present for each hypervisor type.
-        Args:
-            None
-        Returns:
-            True if json query has success, False if not.
+        Initialize the internal list containing each template available for each
+        hypervisor.
+
+        :return: [bool] True in case of success, otherwise False
         """
         json_scheme = self.gen_def_json_scheme('GetHypervisors')
         json_obj = self.call_method_post(method='GetHypervisors', json_scheme=json_scheme)

@@ -30,7 +30,7 @@ class Creator(object):
 class Scheduled(JsonInterfaceBase):
     def __init__(self, DC):
         super(Scheduled, self).__init__()
-        self.wcf_baseurl = 'https://api.dc%s.computing.cloud.it/WsEndUser/v2.6/WsEndUser.svc/json' % (str(DC))
+        self.wcf_baseurl = 'https://api.dc%s.computing.cloud.it/WsEndUser/v2.9/WsEndUser.svc/json' % (str(DC))
 
     @property
     def name(self):
@@ -81,7 +81,7 @@ class ScheduledCreator(Creator):
         self.start = start
         self.end = end
         self.auth = auth_obj
-        self.wcf_baseurl = 'https://api.dc%s.computing.cloud.it/WsEndUser/v2.6/WsEndUser.svc/json' % (str(DC))
+        self.wcf_baseurl = 'https://api.dc%s.computing.cloud.it/WsEndUser/v2.9/WsEndUser.svc/json' % (str(DC))
         self.json_msg = {
             'ApplicationId': 'SetAddServerScheduledOperation',
             'RequestId': 'SetAddServerScheduledOperation',
