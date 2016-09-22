@@ -65,7 +65,6 @@ class IRequest(object):
 
 # noinspection PyPep8Naming
 class Request(IRequest):
-
     def __init__(self, logger=None, Username=str(), Password=str(), SessionId=None, ApplicationId=None, RequestId=None,
                  uri=None):
         """
@@ -130,6 +129,30 @@ class Request(IRequest):
 
     def __setstate__(self, state):
         self.__dict__.update(state)
+
+
+class ArubaCloudService(object):
+    def __init__(self, ws_uri, username, password, token=None):
+        """
+        :type ws_uri: str
+        :type username: str
+        :type password: str
+        :type token: str
+        :param ws_uri: WsEndUser URI
+        :param username: ArubaCloud Service Username
+        :param password: ArubaCloud Service Password
+        :param token: Nullable, Token to be used instead of password
+        """
+        self.ws_uri = ws_uri
+        self.username = username
+        self.password = password
+        self.token = token
+
+    def login(self):
+        raise NotImplemented('Not implemented yet...')
+
+    def _call(self, method, *args, **kwargs):
+        raise NotImplementedError
 
 
 class Auth(object):

@@ -6,4 +6,4 @@ class GetSharedStorages(Request):
         super(GetSharedStorages, self).__init__(*args, **kwargs)
 
     def commit(self):
-        self._commit()
+        return self._commit()
