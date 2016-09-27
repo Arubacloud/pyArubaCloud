@@ -3,4 +3,3 @@ class SharedStorageStatus(object):
     Active = 2
     Deleting = 3
     Deleted = 4
-

@@ -32,7 +32,12 @@ class ReverseDns(ArubaCloudService):
         return response['Success']
 
     def reset(self, address=None):
+        """
+        Remove all PTR records from the given address
+        :type address: str
+        :param address: (str) The IP Address to reset
+        :return: (bool) True in case of success, False in case of failure
+        """
         request = self._call(SetEnqueueResetReverseDns, IPs=address)
         response = request.commit()
         return response['Success']
-

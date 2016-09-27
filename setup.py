@@ -21,5 +21,5 @@ setup(
         "Topic :: Utilities",
         "License :: OSI Approved :: MIT License",
     ],
-    install_requires=['requests>=2.1.9', 'jsonpickle']
+    install_requires=['requests>=2.1.9', 'jsonpickle', 'codeclimate-test-reporter']
 )
