@@ -101,10 +101,10 @@ class Request(IRequest):
         serialized_json = jsonpickle.encode(self, unpicklable=False, )
         headers = {'Content-Type': 'application/json', 'Content-Length': str(len(serialized_json))}
         response = Http.post(url=url, data=serialized_json, headers=headers)
-        content = jsonpickle.decode(response.content.decode("utf-8"))
         if response.status_code != 200:
             from ArubaCloud.base.Errors import MalformedJsonRequest
             raise MalformedJsonRequest("Request: {}, Status Code: {}".format(serialized_json, response.status_code))
+        content = jsonpickle.decode(response.content.decode("utf-8"))
         if content['ResultCode'] == 17:
             from ArubaCloud.base.Errors import OperationAlreadyEnqueued
             raise OperationAlreadyEnqueued("{} already enqueued".format(self.__class__.__name__))

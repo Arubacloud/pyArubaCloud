@@ -28,7 +28,7 @@ from ArubaCloud.PyArubaAPI import CloudInterface
 ci = CloudInterface(dc=1)
 ci.login(username="XXX-XXXX", password="XXXXXXXX", load=True)
 ```
-Once you have instantiated CloudInterface object by specifiyng the number of the datacenter(1 to 6), keeping in mind this association:
+Once you have instantiated CloudInterface object by specifying the number of the datacenter(1 to 6), keeping in mind this association:
 - 1 -> DC1 -> Italy
 - 2 -> DC2 -> Italy
 - 3 -> DC3 -> Czech Republic
@@ -103,6 +103,24 @@ c = SmartVmCreator(name='small01', admin_password='MyStrongPassword', template_i
 c.set_type(size='small')
 
 print(c.commit(url=ci.wcf_baseurl, debug=True))
+```
+
+#### Example to use ReverseDns
+``` python
+from ArubaCloud.ReverseDns import ReverseDns
+
+ci = CloudInterface(dc=1)
+rdns = ReverseDns(username='XXX-XXXX', password='XXXXXXX', ws_uri=ci.wcf_baseurl)
+
+# get configured reverse dns
+print(rdns.get())
+
+# set a new reverse dns with one or more PTR hosts
+print(rdns.set(address='XXX.XXX.XXX.XXX', host_name=['rhost1', 'rhost2']
+
+# reset a reverse dns
+print(rdns.reset(address='XXX.XXX.XXX.XXX')
+
 ```
 
 More examples can be found in the [examples folder](https://github.com/Arubacloud/pyArubaCloud/tree/master/examples), following the complete list:
