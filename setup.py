@@ -7,7 +7,7 @@ def read(fname):
 
 setup(
     name="pyArubaCloud",
-    version="0.7",
+    version="0.7.1",
     author="Alessio Rocchi",
     author_email="alessio.rocchi@staff.aruba.it",
     description="Python Interface to interact with ArubaCloud IaaS Service.",
