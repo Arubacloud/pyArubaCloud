@@ -1,5 +1,5 @@
 from ArubaCloud.base import Request
-from ArubaCloud.SharedStorage.Models import SharedStorageIQNID, SharedStorageProtocolType
+from ArubaCloud.SharedStorage.Models import SharedStorageIQN, SharedStorageProtocolType
 
 
 class SetEnqueuePurchaseSharedStorage(Request):
@@ -9,7 +9,7 @@ class SetEnqueuePurchaseSharedStorage(Request):
         :type Quantity: int
         :type SharedStorageName: str
         :type SharedStorageProtocolType: SharedStorageProtocols
-        :type SharedStorageIQNs: list[SharedStorageIQNID]
+        :type SharedStorageIQNs: list[SharedStorageIQN]
         :param Quantity: Amount of GB
         :param SharedStorageName: The name of the resource
         :param SharedStorageProtocolType: the object representing the protocol to instantiate

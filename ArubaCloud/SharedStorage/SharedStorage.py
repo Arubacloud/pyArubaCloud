@@ -1,5 +1,5 @@
 from ArubaCloud.SharedStorage.Requests import *
-from ArubaCloud.SharedStorage.Models import SharedStorageProtocolType, SharedStorageIQNID
+from ArubaCloud.SharedStorage.Models import SharedStorageProtocolType, SharedStorageIQN
 from ArubaCloud.base import ArubaCloudService
 
 
@@ -33,7 +33,7 @@ class SharedStorage(ArubaCloudService):
         """
         iqns = []
         for _iqn in iqn:
-            iqns.append(SharedStorageIQNID(Value=_iqn))
+            iqns.append(SharedStorageIQN(Value=_iqn))
         request = self._call(SetEnqueuePurchaseSharedStorage, Quantity=quantity, SharedStorageName=name,
                              SharedStorageIQNs=iqns, SharedStorageProtocolType=protocol)
         response = request.commit()
