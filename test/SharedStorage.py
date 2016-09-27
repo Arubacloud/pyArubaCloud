@@ -8,8 +8,8 @@ class ReverseDnsTest(unittest.TestCase):
         self.sharedStorage = SharedStorage(ws_uri=ws_uri, username=username, password=password)
 
     def test_set_enqueue_purchase_shared_storage_iscsi(self):
-        iqns = [1002,
-                2001]
+        iqns = ['hsadfl.fsadf234f',
+                'f34f34f.2f43f2f3f']
         response = self.sharedStorage.purchase_iscsi(quantity=100, name='TestSharedStorage', iqn=iqns)
         self.assertIsNotNone(response)
 

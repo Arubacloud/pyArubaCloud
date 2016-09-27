@@ -1,7 +1,7 @@
 from SharedStorageStatus import SharedStorageStatus
 
 
-class SharedStorageIQNID(object):
+class SharedStorageIQN(object):
     def __init__(self, iqnid=0, Status=SharedStorageStatus.Active, Value=""):
         """
         Initialize a new IQN Object
