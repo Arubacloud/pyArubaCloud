@@ -8,7 +8,7 @@ class ReverseDnsTest(unittest.TestCase):
         self.reverseDns = ReverseDns(ws_uri=ws_uri, username=username, password=password)
 
     def test_get_reverse_dns(self):
-        response = self.reverseDns.get()
+        response = self.reverseDns.get(addresses=['77.81.230.29'])
         self.assertIsNotNone(response)
         self.assertIsInstance(response, list)
 

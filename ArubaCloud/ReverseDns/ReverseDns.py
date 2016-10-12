@@ -9,12 +9,14 @@ class ReverseDns(ArubaCloudService):
     def _call(self, method, *args, **kwargs):
         return method(Username=self.username, Password=self.password, uri=self.ws_uri, *args, **kwargs)
 
-    def get(self):
+    def get(self, addresses):
         """
+        :type addresses: list[str]
+        :param addresses: (list[str]) List of addresses to retrieve their reverse dns
         Retrieve the current configured ReverseDns entries
-        :return: [list] List containing the current ReverseDns Addresses
+        :return: (list) List containing the current ReverseDns Addresses
         """
-        request = self._call(GetReverseDns)
+        request = self._call(GetReverseDns, IPs=addresses)
         response = request.commit()
         return response['Value']
 
@@ -34,8 +36,8 @@ class ReverseDns(ArubaCloudService):
     def reset(self, address=None):
         """
         Remove all PTR records from the given address
-        :type address: str
-        :param address: (str) The IP Address to reset
+        :type address: List[str]
+        :param address: (List[str]) The IP Address to reset
         :return: (bool) True in case of success, False in case of failure
         """
         request = self._call(SetEnqueueResetReverseDns, IPs=address)
