@@ -5,7 +5,7 @@ from ArubaCloud.objects import VirtualDisk
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('-d', '--datacenter', help='Specify datacenter to login.', action='store', dest='dc',
+    parser.add_argument('-d', '--datacenter', help='Specify datacenter to login.', action='store', type=int, dest='dc',
                         required=True)
     parser.add_argument('-u', '--username', help='Specify username.', action='store', dest='username', required=True)
     parser.add_argument('-w', '--password', help='Specify password.', action='store', dest='password', required=True)

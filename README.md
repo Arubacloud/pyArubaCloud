@@ -78,9 +78,10 @@ from ArubaCloud.objects import ProVmCreator
 ci = CloudInterface(dc=1)
 ci.login(username="XXX-XXXX", password="XXXXXXXX", load=True)
 
-ip = i.purchase_ip()
+ip = ci.purchase_ip()
 
-c = ProVmCreator(name='debian01', admin_password='MyStrongPassword', template_id='1761', auth_obj=ci.auth)
+# template_id: 5 [Hypervisor: VMware (Linux Centos 5.6 - 64bit)]
+c = ProVmCreator(name='debian01', admin_password='MyStrongPassword', template_id='5', auth_obj=ci.auth)
 c.set_cpu_qty(2)
 c.set_ram_qty(6)
   
@@ -99,7 +100,8 @@ from ArubaCloud.objects import SmartVmCreator
 ci = CloudInterface(dc=1)
 ci.login(username="XXX-XXXX", password="XXXXXXXX", load=True)
 
-c = SmartVmCreator(name='small01', admin_password='MyStrongPassword', template_id=761, auth_obj=ci.auth)
+# template_id: 1114 [Hypervisor: SMART (Debian 7 - 64bit)]
+c = SmartVmCreator(name='small01', admin_password='MyStrongPassword', template_id=1114, auth_obj=ci.auth)
 c.set_type(size='small')
 
 print(c.commit(url=ci.wcf_baseurl, debug=True))
