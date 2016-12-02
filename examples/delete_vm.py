@@ -1,4 +1,5 @@
 import argparse
+import time
 
 from ArubaCloud.PyArubaAPI import CloudInterface
 
@@ -15,6 +16,16 @@ if __name__ == '__main__':
 
     i.get_servers()
 
+    maxretries = 5
     for vm in i.vmlist.find(name=p.pattern):
-        vm.poweroff()
+        if vm.status == 3:
+            vm.poweroff()
+        for w in range(maxretries):
+            server_detail = i.get_server_detail(server_id=vm.sid)
+            if server_detail['ServerStatus'] == 2:
+                break
+            else:
+                print("Waiting shutdown")
+                time.sleep(5)
+        
         i.delete_vm(server_id=vm.sid)

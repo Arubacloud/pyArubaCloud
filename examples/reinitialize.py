@@ -12,11 +12,12 @@ if __name__ == '__main__':
     parser.add_argument('--new-admin-password', action='store', dest='new_admin_passwd')
     p = parser.parse_args()
 
-    o = CloudInterface(p.dc)
-    o.login(p.username, p.password, False)
-    for vm in o.get_vm(pattern=p.pattern):
+    i = CloudInterface(p.dc)
+    i.login(p.username, p.password, False)
+    for vm in i.get_vm(pattern=p.pattern):
         print('Reinitialize: %s' % vm.vm_name)
-        vm.poweroff()
-        while len(o.get_jobs()['Value']) > 0:
+        if vm.status == 3:
+            vm.poweroff()
+        while len(i.get_jobs()['Value']) > 0:
             time.sleep(1)
         vm.reinitialize(admin_password=p.new_admin_passwd)

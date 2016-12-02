@@ -25,7 +25,7 @@ if __name__ == '__main__':
     c.set_cpu_qty(2)
     c.set_ram_qty(6)
     c.add_public_ip(public_ip_address_resource_id=ip.resid)
-    c.add_virtual_disk(20)
+    c.add_virtual_disk(40)
     c.add_virtual_disk(40)
 
     pprint(c.get_json())

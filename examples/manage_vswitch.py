@@ -7,7 +7,6 @@ if __name__ == '__main__':
     parser.add_argument('-d', '--datacenter', help='Specify datacenter to login.', action='store', type=int, dest='dc')
     parser.add_argument('-u', '--username', help='Specify username.', action='store', dest='username')
     parser.add_argument('-w', '--password', help='Specify password.', action='store', dest='password')
-    parser.add_argument('-t', '--template', help='Specify template.', action='store', dest='template')
     parser.add_argument('--vlan-name', help='Specify vSwitch Name.', action='store', dest='vlan_name')
     parser.add_argument('--vm-name', help='Name of the VM to attach the new VLAN.', action='store', dest='vm_name')
     p = parser.parse_args()
@@ -21,7 +20,7 @@ if __name__ == '__main__':
     # find the vm object
     vm = i.vmlist.find(p.vm_name)[0]
     # find the network adapter object
-    network_adapter = i.get_server_detail(server_id=vm.sid)['NetworkAdapters'][1]
+    network_adapter = i.get_server_detail(server_id=vm.sid)['NetworkAdapters'][0]
     # attach the network adapter to the created vlan
     i.attach_vlan(network_adapter_id=network_adapter['Id'], vlan_resource_id=vlan.resource_id)
 

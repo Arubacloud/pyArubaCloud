@@ -15,5 +15,5 @@ if __name__ == '__main__':
 
     i.get_servers()
 
-    vm = i.vmlist.find(name='test-api')[0]
+    vm = i.vmlist.find(name=p.pattern)[0]
     vm.upgrade_vm(package_id=3)
