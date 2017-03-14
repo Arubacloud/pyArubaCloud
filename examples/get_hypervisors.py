@@ -1,4 +1,5 @@
 import argparse
+from pprint import pprint
 
 from ArubaCloud.PyArubaAPI import CloudInterface
 
@@ -14,5 +15,5 @@ if __name__ == '__main__':
 
     i.get_hypervisors()
 
-    from pprint import pprint
     pprint(i.find_template(name='Windows', hv=2))
+
