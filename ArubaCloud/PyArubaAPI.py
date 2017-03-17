@@ -177,7 +177,7 @@ class CloudInterface(JsonInterface):
                 s.ip_addr = []
                 for ip in self.iplist:
                     if ip.serverid == s.sid:
-                        s.ip_addr = ip
+                        s.ip_addr.append(ip)
             self.vmlist.append(s)
         return True if json_obj['Success'] is True else False
 
