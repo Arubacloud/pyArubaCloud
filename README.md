@@ -110,6 +110,7 @@ print(c.commit(url=ci.wcf_baseurl, debug=True))
 #### Example of how to set a SSH key
 ``` python
 c.set_ssh_key('yourpublicekey.pub')
+```
 
 #### Example to use ReverseDns
 ``` python
