@@ -37,10 +37,11 @@ class Scheduled(JsonInterfaceBase):
         return self.name
 
     def get_scheduled_operations(self, start, end):
+        
         get_shed_ops_request = {
             "GetScheduledOperations": {
-                "EndTime": end,
-                "StartTime": start
+                "EndDate": end,
+                "StartDate": start
             }
         }
         scheme = self.gen_def_json_scheme('GetScheduledOperations', method_fields=get_shed_ops_request)
