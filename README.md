@@ -107,6 +107,11 @@ c.set_type(size='small')
 print(c.commit(url=ci.wcf_baseurl, debug=True))
 ```
 
+#### Example of how to set a SSH key
+``` python
+c.set_ssh_key('your_public_key.pub')
+```
+
 #### Example to use ReverseDns
 ``` python
 from ArubaCloud.ReverseDns import ReverseDns
