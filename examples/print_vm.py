@@ -22,5 +22,6 @@ if __name__ == '__main__':
         if isinstance(vm, Smart):
             print("VM IP: {}".format(vm.ip_addr))
         elif isinstance(vm, Pro):
-            print("VM IP: {}".format(vm.ip_addr.ip_addr))
+            for ip in vm.ip_addr:
+                print("VM IP: {}".format(ip.ip_addr))
         print("############################")

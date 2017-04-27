@@ -115,6 +115,12 @@ class ProVmCreator(Creator):
 
     def set_ram_qty(self, ram_qty):
         self.json_msg['Server']['RAMQuantity'] = ram_qty
+        
+    def set_ssh_key(self, public_key_path):
+        with open(public_key_path, 'r') as content_file:
+            content = content_file.read()
+        self.json_msg['Server']['SshKey'] = content
+        self.json_msg['Server']['SshPasswordAuthAllowed'] = True
 
 
 class SmartVmCreator(Creator):
@@ -154,6 +160,12 @@ class SmartVmCreator(Creator):
                  'extralarge': 4}
         self.json_msg['Server']['SmartVMWarePackageID'] = sizes[size]
         return True
+    
+    def set_ssh_key(self, public_key_path):
+        with open(public_key_path, 'r') as content_file:
+            content = content_file.read()
+        self.json_msg['Server']['SshKey'] = content
+        self.json_msg['Server']['SshPasswordAuthAllowed'] = True
 
 
 class Vlan(object):

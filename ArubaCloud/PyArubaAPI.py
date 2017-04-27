@@ -1,4 +1,5 @@
 import logging
+import sys
 from pprint import pprint
 
 from ArubaCloud.base import Auth, JsonInterfaceBase
@@ -176,7 +177,7 @@ class CloudInterface(JsonInterface):
                 s.ip_addr = []
                 for ip in self.iplist:
                     if ip.serverid == s.sid:
-                        s.ip_addr = ip
+                        s.ip_addr.append(ip)
             self.vmlist.append(s)
         return True if json_obj['Success'] is True else False
 
@@ -209,7 +210,10 @@ class CloudInterface(JsonInterface):
             )
         else:
             raise Exception('Error, no pattern defined')
-        return template_list
+        if  sys.version_info.major < (3):
+            return template_list
+        else:
+            return(list(template_list))
 
     def get_vm(self, pattern=None):
         if len(self.vmlist) <= 0:
