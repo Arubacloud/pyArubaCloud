@@ -18,10 +18,12 @@ if __name__ == '__main__':
 
     i = CloudInterface(dc=p.dc)
     i.login(username=p.username, password=p.password, load=True)
-
+    
+    packageID = i.get_package_id(p.pkg)
+    
     from ArubaCloud.objects import SmartVmCreator
     c = SmartVmCreator(name=p.vmname, admin_password=p.vmpassword, template_id=p.template, auth_obj=i.auth)
-    c.set_type(size=p.pkg)
+    c.set_type(packageID)
 
     pprint(c.get_json())
 

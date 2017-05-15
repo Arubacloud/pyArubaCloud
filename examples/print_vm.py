@@ -1,7 +1,7 @@
 import argparse
 
 from ArubaCloud.PyArubaAPI import CloudInterface
-from ArubaCloud.objects.VmTypes import *
+from ArubaCloud.objects.VmTypes import Smart, Pro
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()

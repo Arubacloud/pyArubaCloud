@@ -144,7 +144,7 @@ class SmartVmCreator(Creator):
             }
         }
 
-    def set_type(self, size='small'):
+    def set_type(self, package_id):
         """
         Define the size of the VM. Size available:
          - small
@@ -154,12 +154,9 @@ class SmartVmCreator(Creator):
         :param size: str()
         :return:
         """
-        sizes = {'small': 1,
-                 'medium': 2,
-                 'large': 3,
-                 'extralarge': 4}
-        self.json_msg['Server']['SmartVMWarePackageID'] = sizes[size]
+        self.json_msg['Server']['SmartVMWarePackageID'] = package_id
         return True
+    
     
     def set_ssh_key(self, public_key_path):
         with open(public_key_path, 'r') as content_file:

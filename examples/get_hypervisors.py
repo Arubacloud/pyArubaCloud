@@ -14,6 +14,9 @@ if __name__ == '__main__':
     i.login(username=p.username, password=p.password, load=True)
 
     i.get_hypervisors()
-
-    pprint(i.find_template(name='Windows', hv=2))
-
+    #pprint(i.find_template(name='Windows'))
+    # hv=1 = LC (HyperV)
+    # hv=2 = VW (VMWARE)
+    # hv=3 = HV (HyperV)
+    # hv=4 = SMART
+    pprint(i.find_template(name='Ubuntu', hv=4))
