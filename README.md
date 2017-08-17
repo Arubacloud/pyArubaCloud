@@ -56,7 +56,16 @@ ci.get_hypervisors()
 from pprint import pprint
 pprint(ci.find_template(name='Debian', hv=4))
 ```
-
+When you select a template to create a new machine the template has to be enabled. In the result of find_template you can check if a template is enabled.
+```
+[Template Name: Debian 5 32bit, Hypervisor: SMART, Id: 959, Enabled: False,
+ Template Name: Debian 5 64bit, Hypervisor: SMART, Id: 960, Enabled: False,
+ Template Name: Debian 6 32bit, Hypervisor: SMART, Id: 961, Enabled: False,
+ Template Name: Debian 6 64bit, Hypervisor: SMART, Id: 962, Enabled: False,
+ Template Name: Debian 7 64bit, Hypervisor: SMART, Id: 1114, Enabled: True,
+ Template Name: Debian 7 32bit, Hypervisor: SMART, Id: 1115, Enabled: True,
+ Template Name: Debian 8 64bit, Hypervisor: SMART, Id: 1723, Enabled: True]
+```
 ### Create a new VM
 In order to create a VM you have to instantiate the specific object exposed by the ArubaCloud.objects package:
 - ProVmCreator
@@ -80,8 +89,8 @@ ci.login(username="XXX-XXXX", password="XXXXXXXX", load=True)
 
 ip = ci.purchase_ip()
 
-# template_id: 5 [Hypervisor: VMware (Linux Centos 5.6 - 64bit)]
-c = ProVmCreator(name='debian01', admin_password='MyStrongPassword', template_id='5', auth_obj=ci.auth)
+# template_id: 1605 [Template Name: CentOS 7.x 64bit, Hypervisor: VW, Id: 1605, Enabled: True]
+c = ProVmCreator(name='debian01', admin_password='MyStrongPassword', template_id='1605', auth_obj=ci.auth)
 c.set_cpu_qty(2)
 c.set_ram_qty(6)
   
