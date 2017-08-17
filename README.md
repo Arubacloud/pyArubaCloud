@@ -102,7 +102,7 @@ ci.login(username="XXX-XXXX", password="XXXXXXXX", load=True)
 
 # template_id: 1114 [Hypervisor: SMART (Debian 7 - 64bit)]
 c = SmartVmCreator(name='small01', admin_password='MyStrongPassword', template_id=1114, auth_obj=ci.auth)
-c.set_type(size='small')
+c.set_type(ci.get_package_id('small'))
 
 print(c.commit(url=ci.wcf_baseurl, debug=True))
 ```
