@@ -473,10 +473,10 @@ class CloudInterface(JsonInterface):
 
     def restore_vm(self, server_id=None, cpu_qty=None, ram_qty=None):
         restore_request = {
-            "SetEnqueueServerRestore": {
+            "Server": {
                 "ServerId": server_id,
-                "CPUQuantity ": cpu_qty,
-                "RAMQuantity ": ram_qty
+                "CPUQuantity": cpu_qty,
+                "RAMQuantity": ram_qty
             }
         }
         json_scheme = self.gen_def_json_scheme('SetEnqueueServerRestore', method_fields=restore_request)
