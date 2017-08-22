@@ -475,8 +475,8 @@ class CloudInterface(JsonInterface):
         restore_request = {
             "Server": {
                 "ServerId": server_id,
-                "CPUQuantity ": cpu_qty,
-                "RAMQuantity ": ram_qty
+                "CPUQuantity": cpu_qty,
+                "RAMQuantity": ram_qty
             }
         }
         json_scheme = self.gen_def_json_scheme('SetEnqueueServerRestore', method_fields=restore_request)
