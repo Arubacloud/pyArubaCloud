@@ -14,7 +14,7 @@ setup(
     license=" Apache License, Version 2.0",
     keywords="arubacloud.com cloud.it Cloud IaaS Api",
     url="https://github.com/Arubacloud/pyArubaCloud",
-    packages=['ArubaCloud', 'ArubaCloud.base', 'ArubaCloud.helper', 'ArubaCloud.objects.VmTypes', 'ArubaCloud.objects'],
+    packages=['ArubaCloud', 'ArubaCloud.base', 'ArubaCloud.helper', 'ArubaCloud.objects.VmTypes', 'ArubaCloud.objects', 'ArubaCloud.ReverseDns', 'ArubaCloud.ReverseDns.Models', 'ArubaCloud.ReverseDns.Requests'],
     long_description="Python Interface to interact with ArubaCLoud IaaS Service.",
     classifiers=[
         "Development Status :: 4 - Beta",
