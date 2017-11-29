@@ -4,7 +4,7 @@ Python Interface for ArubaCloud IaaS Service. This is an early-stage release, no
 
 This project is under development, the classes, methods and parameters might change over time. This README usually reflects the syntax of the latest version.
 
-#Getting Started
+# Getting Started
 ## Installation
 Python Package:
 ```
@@ -18,10 +18,10 @@ cd pyArubaCloud
 python setup.py install
 ```
 
-##Usage
+## Usage
 In the examples folder you can find some examples on various operations which can be done via API.
 
-###Log in to the service
+### Log in to the service
 ``` python
 from ArubaCloud.PyArubaAPI import CloudInterface
 
@@ -38,7 +38,7 @@ Once you have instantiated CloudInterface object by specifying the number of the
 
 You can login with your username and password (i.e. AWI-19054), `load` parameter is used to cache all of the data related to the account (within the datacenter) at the login phase.
 
-###Retrieve all templates related to a hypervisor
+### Retrieve all templates related to a hypervisor
 You have the following 4 types of hypervisors to choose from:
 - 1 -> Microsoft Hyper-V - Cloud Pro
 - 2 -> VMWare - Cloud Pro
