@@ -7,14 +7,14 @@ def read(fname):
 
 setup(
     name="pyArubaCloud",
-    version="0.7.7",
+    version="0.7.9",
     author="Aruba S.p.A.",
     author_email="luca.lasagni@staff.aruba.it",
     description="Python Interface to interact with ArubaCloud IaaS Service.",
     license=" Apache License, Version 2.0",
     keywords="arubacloud.com cloud.it Cloud IaaS Api",
     url="https://github.com/Arubacloud/pyArubaCloud",
-    packages=['ArubaCloud', 'ArubaCloud.base', 'ArubaCloud.helper', 'ArubaCloud.objects.VmTypes', 'ArubaCloud.objects', 'ArubaCloud.ReverseDns', 'ArubaCloud.ReverseDns.Models', 'ArubaCloud.ReverseDns.Requests'],
+    packages=['ArubaCloud', 'ArubaCloud.base', 'ArubaCloud.helper', 'ArubaCloud.objects.VmTypes', 'ArubaCloud.objects', 'ArubaCloud.ReverseDns', 'ArubaCloud.ReverseDns.Requests'],
     long_description="Python Interface to interact with ArubaCLoud IaaS Service.",
     classifiers=[
         "Development Status :: 4 - Beta",
