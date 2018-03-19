@@ -124,20 +124,21 @@ c.set_ssh_key('your_public_key.pub')
 
 #### Example to use ReverseDns
 ``` python
+
+m ArubaCloud.PyArubaAPI import CloudInterface
 from ArubaCloud.ReverseDns import ReverseDns
 
-ci = CloudInterface(dc=1)
-rdns = ReverseDns.ReverseDns(username='XXX-XXXX', password='XXXXXXX', ws_uri=ci.wcf_baseurl)
+ci = CloudInterface(dc=X)
+rdns = ReverseDns.ReverseDns(username='XXXXXX', password='XXXXX', ws_uri=ci.wcf_baseurl)
 
 # get configured reverse dns
-print(rdns.get())
+print(rdns.get(addresses=['XXX.XXX.XXX.XXX']))
 
 # set a new reverse dns with one or more PTR hosts
-print(rdns.set(address='XXX.XXX.XXX.XXX', host_name=['rhost1', 'rhost2']
+#print(rdns.set(address='XXX.XXX.XXX.XXX', host_name=['xxxx.domain.com', 'xxxx2.domain.com']))
 
 # reset a reverse dns
-print(rdns.reset(address='XXX.XXX.XXX.XXX')
-
+#print(rdns.reset(addresses=['XXX.XXX.XXX.XXX']))
 ```
 
 More examples can be found in the [examples folder](https://github.com/Arubacloud/pyArubaCloud/tree/master/examples), following the complete list:
