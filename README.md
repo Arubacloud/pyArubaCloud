@@ -128,7 +128,7 @@ c.set_ssh_key('your_public_key.pub')
 from ArubaCloud.PyArubaAPI import CloudInterface
 from ArubaCloud.ReverseDns import ReverseDns
 
-ci = CloudInterface(dc=X)
+ci = CloudInterface(dc=1)
 rdns = ReverseDns.ReverseDns(username='XXXXXX', password='XXXXX', ws_uri=ci.wcf_baseurl)
 
 # get configured reverse dns
