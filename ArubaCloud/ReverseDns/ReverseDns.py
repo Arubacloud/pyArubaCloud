@@ -16,7 +16,7 @@ class ReverseDns(ArubaCloudService):
         Retrieve the current configured ReverseDns entries
         :return: (list) List containing the current ReverseDns Addresses
         """
-        request = self._call(GetReverseDns, IPs=addresses)
+        request = self._call(GetReverseDns.GetReverseDns, IPs=addresses)
         response = request.commit()
         return response['Value']
 
@@ -29,7 +29,7 @@ class ReverseDns(ArubaCloudService):
         :param host_name: (list[str]) The list of strings representing PTR records
         :return: (bool) True in case of success, False in case of failure
         """
-        request = self._call(SetEnqueueSetReverseDns, IP=address, Hosts=host_name)
+        request = self._call(SetEnqueueSetReverseDns.SetEnqueueSetReverseDns, IP=address, Hosts=host_name)
         response = request.commit()
         return response['Success']
 
@@ -40,6 +40,6 @@ class ReverseDns(ArubaCloudService):
         :param address: (List[str]) The IP Address to reset
         :return: (bool) True in case of success, False in case of failure
         """
-        request = self._call(SetEnqueueResetReverseDns, IPs=address)
+        request = self._call(SetEnqueueResetReverseDns.SetEnqueueResetReverseDns, IPs=address)
         response = request.commit()
         return response['Success']
