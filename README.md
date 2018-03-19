@@ -125,7 +125,7 @@ c.set_ssh_key('your_public_key.pub')
 #### Example to use ReverseDns
 ``` python
 
-m ArubaCloud.PyArubaAPI import CloudInterface
+from ArubaCloud.PyArubaAPI import CloudInterface
 from ArubaCloud.ReverseDns import ReverseDns
 
 ci = CloudInterface(dc=X)
