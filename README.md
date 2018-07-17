@@ -29,12 +29,13 @@ ci = CloudInterface(dc=1)
 ci.login(username="XXX-XXXX", password="XXXXXXXX", load=True)
 ```
 Once you have instantiated CloudInterface object by specifying the number of the datacenter(1 to 6), keeping in mind this association:
-- 1 -> DC1 -> Italy
-- 2 -> DC2 -> Italy
+- 1 -> DC1 -> Italy 1
+- 2 -> DC2 -> Italy 2
 - 3 -> DC3 -> Czech Republic
 - 4 -> DC4 -> France
 - 5 -> DC5 -> Germany
 - 6 -> DC6 -> UK
+- 7 -> DC7 -> Italy 3
 - 8 -> DC8 -> Poland
 
 You can login with your username and password (i.e. AWI-19054), `load` parameter is used to cache all of the data related to the account (within the datacenter) at the login phase.
