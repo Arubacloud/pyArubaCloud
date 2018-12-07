@@ -28,5 +28,5 @@ setup(
 		"Topic :: Software Development :: Libraries :: Python Modules",
         "Topic :: Utilities"
     ],
-    install_requires=['requests>=2.1.9', 'jsonpickle']
+    install_requires=['requests>=2.4.2', 'jsonpickle']
 )
